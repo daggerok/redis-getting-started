@@ -203,6 +203,17 @@ redis-cli 'hgetall person'
 # 2) "maksimko"
 ```
 
+### `hsetnx`
+
+set field value if it's does not exists
+
+```bash
+redis-cli 'hsetnx person age 18' # will set new field
+# (integer) 1
+redis-cli 'hsetnx person age 19' # will ignore because age field already exists
+# (integer) 0
+```
+
 ## cleanup
 
 ```bash
