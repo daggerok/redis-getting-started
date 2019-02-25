@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <link rel="icon" href="/redis-getting-started/favicon.ico">
     
-    <link rel="preload" href="/redis-getting-started/assets/css/0.styles.5328743e.css" as="style"><link rel="preload" href="/redis-getting-started/assets/js/app.3699df1b.js" as="script"><link rel="preload" href="/redis-getting-started/assets/js/3.bb0a1928.js" as="script"><link rel="prefetch" href="/redis-getting-started/assets/js/2.7974f97d.js"><link rel="prefetch" href="/redis-getting-started/assets/js/4.0841cf35.js">
+    <link rel="preload" href="/redis-getting-started/assets/css/0.styles.5328743e.css" as="style"><link rel="preload" href="/redis-getting-started/assets/js/app.f931defc.js" as="script"><link rel="preload" href="/redis-getting-started/assets/js/3.bcebd4c7.js" as="script"><link rel="prefetch" href="/redis-getting-started/assets/js/2.7974f97d.js"><link rel="prefetch" href="/redis-getting-started/assets/js/4.0841cf35.js">
     <link rel="stylesheet" href="/redis-getting-started/assets/css/0.styles.5328743e.css">
   </head>
   <body>
@@ -97,6 +97,8 @@ But in case of hashes (field-value pairs) limits up to 4 billions field-value pa
 <span class="token comment"># OK</span>
 redis-cli <span class="token string">'hget person password'</span>
 <span class="token comment"># &quot;very-secret&quot;</span>
+redis-cli <span class="token string">'hmget person password'</span>
+<span class="token comment"># 1) &quot;very-secret&quot;</span>
 redis-cli <span class="token string">'hgetall person'</span>
 <span class="token comment"># 1) &quot;username&quot;</span>
 <span class="token comment"># 2) &quot;maksimko&quot;</span>
@@ -122,9 +124,19 @@ redis-cli <span class="token string">'hsetnx person age 19'</span> <span class="
 <span class="token comment"># (integer) 19</span>
 redis-cli <span class="token string">'hincrby person age 5'</span>
 <span class="token comment"># (integer) 24</span>
+</code></pre></div><h3 id="others"><a href="#others" aria-hidden="true" class="header-anchor">#</a> others</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>redis-cli <span class="token string">'hstrlen person username'</span>
+<span class="token comment"># (integer) 8</span>
+redis-cli  <span class="token string">'hvals person'</span>
+<span class="token comment"># 1) &quot;maksimko&quot;</span>
+<span class="token comment"># 2) &quot;24&quot;</span>
+redis-cli <span class="token string">'hlen person'</span> <span class="token comment"># number of fields in object hash</span>
+<span class="token comment"># (integer) 2</span>
+redis-cli <span class="token string">'hmget person username age'</span>
+<span class="token comment"># 1) &quot;maksimko&quot;</span>
+<span class="token comment"># 2) &quot;24&quot;</span>
 </code></pre></div><p><em>NOTE: returns only key fields of object</em></p> <h2 id="cleanup"><a href="#cleanup" aria-hidden="true" class="header-anchor">#</a> cleanup</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>docker <span class="token function">rm</span> -f -v redis
 </code></pre></div><h2 id="build-vuepress-documentation"><a href="#build-vuepress-documentation" aria-hidden="true" class="header-anchor">#</a> build VuePress documentation</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> i <span class="token punctuation">;</span> <span class="token function">npm</span> run build
-</code></pre></div></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2/25/2019, 1:57:58 AM</span></div></div> <!----> </div> <!----></div></div>
-    <script src="/redis-getting-started/assets/js/app.3699df1b.js" defer></script><script src="/redis-getting-started/assets/js/3.bb0a1928.js" defer></script>
+</code></pre></div></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2/25/2019, 2:04:17 AM</span></div></div> <!----> </div> <!----></div></div>
+    <script src="/redis-getting-started/assets/js/app.f931defc.js" defer></script><script src="/redis-getting-started/assets/js/3.bcebd4c7.js" defer></script>
   </body>
 </html>
