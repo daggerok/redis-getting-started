@@ -214,6 +214,14 @@ redis-cli 'hsetnx person age 19' # will ignore because age field already exists
 # (integer) 0
 ```
 
+### `hkeys`
+
+```bash
+redis-cli 'hkeys person'
+# 1) "username"
+# 2) "age"
+```
+
 ## cleanup
 
 ```bash
