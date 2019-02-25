@@ -182,6 +182,15 @@ redis-cli 'hgetall person'
 # 4) "very-secret"
 ```
 
+### hexists
+
+```bash
+redis-cli 'hexists person age'
+# (integer) 0
+```
+
+_age doesn't exists in person object_
+
 ## cleanup
 
 ```bash
