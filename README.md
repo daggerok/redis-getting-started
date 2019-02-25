@@ -79,6 +79,8 @@ redis-cli 'ttl temporal'
 # (integer) -2
 ```
 
+_NOTE: if you wanna set expire in millis, use `psetex` command instead_
+
 ## set value if key is not available with `setnx`
 
 ```bash
@@ -116,7 +118,7 @@ redis-cli 'keys \*'
 # 3) "k1"
 ```
  
-NOTE:  command `ttl` stands for `time to live`
+_NOTE:  command `ttl` stands for `time to live`_
 
 ## cleanup
 
