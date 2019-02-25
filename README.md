@@ -308,6 +308,8 @@ redis-cli 'linsert my-list after X X' #  List(6 5 4 3 2 1 X X 1 2 3 4 5 6)
 redis-cli 'linsert my-list before X X' # List(6 5 4 3 2 1 X X X 1 2 3 4 5 6)
 ```
 
+![Lists](./lists.png)
+
 ## sets
 
 ```bash
@@ -361,6 +363,8 @@ redis-cli 'smembers result-set'
 ```
 
 also see: `sinter` - intersection and `smove` - move value from some set to another...
+
+![Sets](./sets.png)
 
 okay, enough...
 
