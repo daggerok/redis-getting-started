@@ -163,6 +163,8 @@ redis-cli 'get message'
 # "hello-world!"
 ```
 
+![Strings](./strings.png)
+
 ## hashes
 
 Why? Limitations for strings (key-value pairs) are about 512 Mb.
