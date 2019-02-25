@@ -222,6 +222,17 @@ redis-cli 'hkeys person'
 # 2) "age"
 ```
 
+### `hincrby` similar to strings
+
+```bash
+redis-cli 'hincrby person age 1'
+# (integer) 19
+redis-cli 'hincrby person age 5'
+# (integer) 24
+```
+
+_NOTE: returns only key fields of object_
+
 ## cleanup
 
 ```bash
