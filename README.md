@@ -38,7 +38,6 @@ redis-cli redis-cli 'set message hi'
 ```bash
 redis-cli 'get message'
 # "hi"
-
 redis-cli 'keys *'
 # 1) "message"
 ```
@@ -55,16 +54,30 @@ redis-cli 'del message'
 ```bash
 redis-cli redis-cli 'set k1 v1'
 redis-cli redis-cli 'set k2 v2'
-
+ 
 redis-cli 'keys *'
 # 1) "k2"
 # 2) "k1"
-
 redis-cli 'flushall'
 # OK
 redis-cli 'keys *'
 # (empty list or set)
 ```
+
+## set value with expire of the key `setex`
+
+```bash
+redis-cli 'setex temporal 60 this-value-will-exire-after-60-secons'
+# OK
+redis-cli 'ttl temporal'
+# (integer) 58
+sleep 60s ; redis-cli 'get temporal'
+# (nil)
+redis-cli 'ttl temporal'
+# (integer) -2
+```
+
+NOTE:  command `ttl` stands for `time to live`
 
 ## cleanup
 
