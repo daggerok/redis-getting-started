@@ -19,21 +19,23 @@ docker run -d --rm --name redis redis:alpine
 function redis-cli { bash -c "docker exec -it redis ash -c 'redis-cli $1'"; }
 ```
 
-## show keys `keys`
+## basics
+
+### show keys `keys`
 
 ```bash
 redis-cli 'keys *'
 # (empty list or set)
 ```
 
-## set value `set`
+### set value `set`
 
 ```bash
 redis-cli redis-cli 'set message hi'
 # OK
 ```
 
-## get value `get`
+### get value `get`
 
 ```bash
 redis-cli 'get message'
@@ -42,14 +44,14 @@ redis-cli 'keys *'
 # 1) "message"
 ```
 
-## delete data `del`
+### delete data `del`
 
 ```bash
 redis-cli 'del message'
 # (integer) 1
 ```
 
-## delete all data `flushall`
+### delete all data `flushall`
 
 ```bash
 redis-cli redis-cli 'set k1 v1'
@@ -64,7 +66,7 @@ redis-cli 'keys \*' # escaping star... in real terminal, command should be: redi
 # (empty list or set)
 ```
 
-## set value with expire of the key `setex`
+### set value with expire of the key `setex`
 
 ```bash
 redis-cli 'setex temporal 60 this-value-will-exire-after-60-secons'
@@ -85,7 +87,7 @@ _NOTE: if you wanna set expire in millis, use `psetex` command instead:_
 redis-cli 'psetex key milliseconds value'
 ```
 
-## set value if key is not available with `setnx`
+### set value if key is not available with `setnx`
 
 ```bash
 redis-cli 'get new-key'
@@ -100,7 +102,7 @@ redis-cli 'get new-key'
 # "a-value"
 ```
 
-## get value size with `strlen` command
+### get value size with `strlen` command
 
 ```bash
 redis-cli 'set ololo trololo'
@@ -109,7 +111,7 @@ redis-cli 'strlen ololo'
 # (integer) 7
 ```
 
-## setting multiple key-values
+### setting multiple key-values
 
 ```bash
 redis-cli 'flushall'
@@ -124,7 +126,7 @@ redis-cli 'keys \*'
  
 _NOTE:  command `ttl` stands for `time to live`_
 
-## increment with `incr` and decrement with `decr`  commands
+### increment with `incr` and decrement with `decr`  commands
 
 ```bash
 redis-cli 'set salary 4444'
@@ -137,7 +139,7 @@ redis-cli 'incr salary'
 # (integer) 4445
 ```
 
-## customize previous flow with `incrby` / `decrby`
+### customize previous flow with `incrby` / `decrby`
 
 ```bash
 redis-cli 'set salary 1000'
@@ -150,7 +152,7 @@ redis-cli 'incrby salary 100500'
 # (integer) 101995
 ```
 
-## append
+### append
 
 ```bash
 redis-cli 'set message hello'
@@ -159,6 +161,25 @@ redis-cli 'append message -world!'
 # (integer) 12
 redis-cli 'get message'
 # "hello-world!"
+```
+
+## hashes
+
+Why? Limitations for strings (key-value pairs) are about 512 Mb.
+But in case of hashes (field-value pairs) limits up to 4 billions field-value pairs
+
+### set key field-value pair with `hmset`
+
+```bash
+redis-cli 'hmset person username maksimko password very-secret'
+# OK
+redis-cli 'hget person password'
+# "very-secret"
+redis-cli 'hgetall person'
+# 1) "username"
+# 2) "maksimko"
+# 3) "password"
+# 4) "very-secret"
 ```
 
 ## cleanup
