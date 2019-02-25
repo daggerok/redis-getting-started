@@ -248,6 +248,64 @@ redis-cli 'hmget person username age'
 # 2) "24"
 ```
 
+## list
+
+strings sorted in a some order
+
+```bash
+head <--> value1 <--> value2 <--> ... <--> valueN <--> tail
+```
+
+### debug redis-cli
+
+```bash
+redis-cli 'monitor'
+```
+
+### and do playground in a parallel terminal...
+
+```bash
+# create: my-list = List(3 2 1 0)
+redis-cli 'lpush my-list 0 1 2 3'
+
+# show first 10 elements of my-list moving from left to right
+redis-cli 'lrange my-list 0 10'
+
+# add 4 and 5 from left: List(5 4 3 2 1)
+redis-cli 'lpush my-list 4 5'
+
+# take out 1st left element ("5") from list: List(4 3 2 1)
+redis-cli 'lpop my-list'
+
+# update to palindrome: List(4 3 2 1 0 1 2 3 4)
+redis-cli 'rpush my-list 0 1 2 3 4'
+
+# show list items from 0th index till 10th index
+redis-cli 'lrange my-list 0 10'
+
+# show el of index 3 (4th element moving from left to right): "1"
+redis-cli 'lindex my-list 3'
+
+# set el in a middle to "X": List(4 3 2 1 X 1 2 3 4) 
+redis-cli 'lset my-list 4 X'
+
+# show whole list (from begin: 0, to last: -1)
+redis-cli 'lrange my-list 0 -1'
+
+# this will be not push because list does not exists 
+redis-cli 'lpushx skip this one - it does not exists'
+
+# but this will push both elements: List(6 5 4 3 2 1 X 1 2 3 4 5 6)
+redis-cli 'lpushx my-list 5 6'
+redis-cli 'rpushx my-list 5 6'
+
+# insert XX to make XXX in a middle
+redis-cli 'linsert my-list after X X' #  List(6 5 4 3 2 1 X X 1 2 3 4 5 6)
+redis-cli 'linsert my-list before X X' # List(6 5 4 3 2 1 X X X 1 2 3 4 5 6)
+```
+
+__
+
 _NOTE: returns only key fields of object_
 
 ## cleanup
