@@ -60,7 +60,7 @@ redis-cli 'keys *'
 # 2) "k1"
 redis-cli 'flushall'
 # OK
-redis-cli 'keys *'
+redis-cli 'keys \*' # escaping star... in real terminal, command should be: redis-cli keys *
 # (empty list or set)
 ```
 
@@ -103,6 +103,19 @@ redis-cli 'strlen ololo'
 # (integer) 7
 ```
 
+## setting multiple key-values
+
+```bash
+redis-cli 'flushall'
+# OK
+redis-cli 'mset k1 v1 k2 v2 k3 v3'
+# OK
+redis-cli 'keys \*'
+# 1) "k3"
+# 2) "k2"
+# 3) "k1"
+```
+ 
 NOTE:  command `ttl` stands for `time to live`
 
 ## cleanup
