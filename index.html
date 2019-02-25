@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <link rel="icon" href="/redis-getting-started/favicon.ico">
     
-    <link rel="preload" href="/redis-getting-started/assets/css/0.styles.5328743e.css" as="style"><link rel="preload" href="/redis-getting-started/assets/js/app.d9eedc23.js" as="script"><link rel="preload" href="/redis-getting-started/assets/js/3.811a0d11.js" as="script"><link rel="prefetch" href="/redis-getting-started/assets/js/2.7974f97d.js"><link rel="prefetch" href="/redis-getting-started/assets/js/4.0841cf35.js">
+    <link rel="preload" href="/redis-getting-started/assets/css/0.styles.5328743e.css" as="style"><link rel="preload" href="/redis-getting-started/assets/js/app.cea591de.js" as="script"><link rel="preload" href="/redis-getting-started/assets/js/3.0785059c.js" as="script"><link rel="prefetch" href="/redis-getting-started/assets/js/2.e6b85e1a.js"><link rel="prefetch" href="/redis-getting-started/assets/js/4.5d17e7e2.js">
     <link rel="stylesheet" href="/redis-getting-started/assets/css/0.styles.5328743e.css">
   </head>
   <body>
@@ -92,7 +92,7 @@ redis-cli <span class="token string">'append message -world!'</span>
 <span class="token comment"># (integer) 12</span>
 redis-cli <span class="token string">'get message'</span>
 <span class="token comment"># &quot;hello-world!&quot;</span>
-</code></pre></div><h2 id="hashes"><a href="#hashes" aria-hidden="true" class="header-anchor">#</a> hashes</h2> <p>Why? Limitations for strings (key-value pairs) are about 512 Mb.
+</code></pre></div><p><img src="/redis-getting-started/assets/img/strings.7792750e.png" alt="Strings"></p> <h2 id="hashes"><a href="#hashes" aria-hidden="true" class="header-anchor">#</a> hashes</h2> <p>Why? Limitations for strings (key-value pairs) are about 512 Mb.
 But in case of hashes (field-value pairs) limits up to 4 billions field-value pairs</p> <h3 id="set-key-field-value-pair-with-hmset"><a href="#set-key-field-value-pair-with-hmset" aria-hidden="true" class="header-anchor">#</a> set key field-value pair with <code>hmset</code></h3> <div class="language-bash extra-class"><pre class="language-bash"><code>redis-cli <span class="token string">'hmset person username maksimko password very-secret'</span>
 <span class="token comment"># OK</span>
 redis-cli <span class="token string">'hget person password'</span>
@@ -222,7 +222,7 @@ redis-cli <span class="token string">'smembers result-set'</span>
 <span class="token comment"># 3) &quot;trololo&quot;</span>
 </code></pre></div><p>also see: <code>sinter</code> - intersection and <code>smove</code> - move value from some set to another...</p> <p>okay, enough...</p> <h2 id="cleanup"><a href="#cleanup" aria-hidden="true" class="header-anchor">#</a> cleanup</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>docker <span class="token function">rm</span> -f -v redis
 </code></pre></div><h2 id="build-vuepress-documentation"><a href="#build-vuepress-documentation" aria-hidden="true" class="header-anchor">#</a> build VuePress documentation</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> i <span class="token punctuation">;</span> <span class="token function">npm</span> run build
-</code></pre></div></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2/25/2019, 3:04:23 AM</span></div></div> <!----> </div> <!----></div></div>
-    <script src="/redis-getting-started/assets/js/app.d9eedc23.js" defer></script><script src="/redis-getting-started/assets/js/3.811a0d11.js" defer></script>
+</code></pre></div></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2/25/2019, 11:17:10 PM</span></div></div> <!----> </div> <!----></div></div>
+    <script src="/redis-getting-started/assets/js/app.cea591de.js" defer></script><script src="/redis-getting-started/assets/js/3.0785059c.js" defer></script>
   </body>
 </html>
