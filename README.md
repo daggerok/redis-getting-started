@@ -137,6 +137,20 @@ redis-cli 'incr salary'
 # (integer) 4445
 ```
 
+
+## customize previous flow with `incrby` / `decrby`
+
+```bash
+redis-cli 'set salary 1000'
+# OK
+redis-cli 'decrby salary 5'
+# (integer) 995
+redis-cli 'incrby salary 500'
+# (integer) 1495
+redis-cli 'incrby salary 100500'
+# (integer) 101995
+```
+
 ## cleanup
 
 ```bash
