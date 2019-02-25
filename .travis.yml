@@ -1,0 +1,29 @@
+language: node_js
+node_js: lts/*
+env:
+  global:
+  - secure: qYE97cs7ReGx8/FAdFte+dcm3mQaY89biVemoO3E0TKqht2EEojwGsE5paZkxClMo3YZyIO9LrQbanDp8bs8UqJV+wLWLWSXbPeNSAGfcAQ33Ajqc+pGfflZH9U58nXGXzo5qcy3oPb56c771NqOpeittVmRCMdyyF6JEvJCIX5vvY8358Zdc3+m9pmllc08oWeqM6L/mcozu7XzYntma9NToVi56UQ6aFBFacl2gu5U0wumQLIdhE/ivHc8EIWqm0TQWYH4imqDq0P1YBwn8lq9m0f9SaPRrpLGatAXZaVmLS0MbrSvjX2rvMJKZIMzkWzgi7Z6c7olZmRBHSnRnPpl2+5F62usTQ1FCZXldXU+UFlRjkxScAG1N8sj5cqay8mWMm6i/CTzZU8X/flCuyG1DLIFjmCLlH9uJL3MyDbBYd+K7/3TImU560svKDo/jDYmfXVdk3wnIlElz8TPbpwRR1KhpnpSOUdrjVhpFPzb1hOzhr/39Q7cmO2kWga5dNOBhmn+6dfH1AW/lPdhovaKwvYqGhbMAttWPjBNgmohrSCTOAw8pjYGA80AVfnUpV6+hKBRT3uVhHYlzo4LC7V60d3WXJHhY6DEvnq9JahcVL+6CyJeMn0b6OvHNT4BiyvxScfaWzxHb7g+GnNAM6TIc6mjk296/wbcmQqMuDk=
+install: true
+script:
+- echo noop
+cache:
+  packages: true
+  npm: true
+  directories:
+  - "./node_modules/"
+  - "~/.npm/"
+before_deploy:
+  - npm i ; npm run gh-pages
+deploy:
+  provider: pages
+  skip-cleanup: true
+  local_dir: ./.vuepress/dist
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
+notifications:
+  email: false
+git:
+  depth: false
+  quiet: true

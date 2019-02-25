@@ -1,0 +1,22 @@
+{
+  "name": "redis-getting-started",
+  "version": "1.0.0-SNAPSHOT",
+  "description": "Redis playground",
+  "main": "README.md",
+  "scripts": {
+    "start": "vuepress dev",
+    "build": "vuepress build",
+    "gh-pages": "cross-env BASE_HREF='/redis-getting-started/' vuepress build ."
+  },
+  "keywords": [
+    "vuepress",
+    "docker",
+    "redis"
+  ],
+  "author": "Maksim Kostromin https://gituhub.com/daggerok/",
+  "license": "MIT",
+  "devDependencies": {
+    "cross-env": "5.2.0",
+    "vuepress": "0.14.8"
+  }
+}
