@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <link rel="icon" href="/redis-getting-started/favicon.ico">
     
-    <link rel="preload" href="/redis-getting-started/assets/css/0.styles.5328743e.css" as="style"><link rel="preload" href="/redis-getting-started/assets/js/app.b9c804e4.js" as="script"><link rel="preload" href="/redis-getting-started/assets/js/3.8e7ac651.js" as="script"><link rel="prefetch" href="/redis-getting-started/assets/js/2.7974f97d.js"><link rel="prefetch" href="/redis-getting-started/assets/js/4.0841cf35.js">
+    <link rel="preload" href="/redis-getting-started/assets/css/0.styles.5328743e.css" as="style"><link rel="preload" href="/redis-getting-started/assets/js/app.bae1d9b2.js" as="script"><link rel="preload" href="/redis-getting-started/assets/js/3.6ff85901.js" as="script"><link rel="prefetch" href="/redis-getting-started/assets/js/2.7974f97d.js"><link rel="prefetch" href="/redis-getting-started/assets/js/4.0841cf35.js">
     <link rel="stylesheet" href="/redis-getting-started/assets/css/0.styles.5328743e.css">
   </head>
   <body>
@@ -70,7 +70,7 @@ redis-cli <span class="token string">'keys \*'</span>
 <span class="token comment"># 1) &quot;k3&quot;</span>
 <span class="token comment"># 2) &quot;k2&quot;</span>
 <span class="token comment"># 3) &quot;k1&quot;</span>
-</code></pre></div><p><em>NOTE:  command <code>ttl</code> stands for <code>time to live</code></em></p> <h2 id="increment-num-values-with-incr-command-and-decrement-with-decr"><a href="#increment-num-values-with-incr-command-and-decrement-with-decr" aria-hidden="true" class="header-anchor">#</a> increment num values with <code>incr</code> command and decrement with <code>decr</code></h2> <div class="language-bash extra-class"><pre class="language-bash"><code>redis-cli <span class="token string">'set salary 4444'</span>
+</code></pre></div><p><em>NOTE:  command <code>ttl</code> stands for <code>time to live</code></em></p> <h2 id="increment-with-incr-and-decrement-with-decr-commands"><a href="#increment-with-incr-and-decrement-with-decr-commands" aria-hidden="true" class="header-anchor">#</a> increment with <code>incr</code> and decrement with <code>decr</code>  commands</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>redis-cli <span class="token string">'set salary 4444'</span>
 <span class="token comment"># OK</span>
 redis-cli <span class="token string">'decr salary'</span>
 <span class="token comment"># (integer) 4443</span>
@@ -86,9 +86,15 @@ redis-cli <span class="token string">'incrby salary 500'</span>
 <span class="token comment"># (integer) 1495</span>
 redis-cli <span class="token string">'incrby salary 100500'</span>
 <span class="token comment"># (integer) 101995</span>
+</code></pre></div><h2 id="append"><a href="#append" aria-hidden="true" class="header-anchor">#</a> append</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>redis-cli <span class="token string">'set message hello'</span>
+<span class="token comment"># OK</span>
+redis-cli <span class="token string">'append message -world!'</span>
+<span class="token comment"># (integer) 12</span>
+redis-cli <span class="token string">'get message'</span>
+<span class="token comment"># &quot;hello-world!&quot;</span>
 </code></pre></div><h2 id="cleanup"><a href="#cleanup" aria-hidden="true" class="header-anchor">#</a> cleanup</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>docker <span class="token function">rm</span> -f -v redis
 </code></pre></div><h2 id="build-vuepress-documentation"><a href="#build-vuepress-documentation" aria-hidden="true" class="header-anchor">#</a> build VuePress documentation</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> i <span class="token punctuation">;</span> <span class="token function">npm</span> run build
-</code></pre></div></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2/25/2019, 1:21:27 AM</span></div></div> <!----> </div> <!----></div></div>
-    <script src="/redis-getting-started/assets/js/app.b9c804e4.js" defer></script><script src="/redis-getting-started/assets/js/3.8e7ac651.js" defer></script>
+</code></pre></div></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2/25/2019, 1:24:54 AM</span></div></div> <!----> </div> <!----></div></div>
+    <script src="/redis-getting-started/assets/js/app.bae1d9b2.js" defer></script><script src="/redis-getting-started/assets/js/3.6ff85901.js" defer></script>
   </body>
 </html>
