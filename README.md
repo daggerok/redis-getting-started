@@ -26,6 +26,20 @@ redis-cli 'keys *'
 # (empty list or set)
 ```
 
+## set value
+
+```bash
+redis-cli redis-cli 'set message hi'
+# OK
+```
+
+## get value
+
+```bash
+redis-cli 'get message'
+# "hi"
+```
+
 ## cleanup
 
 ```bash
