@@ -124,7 +124,7 @@ redis-cli 'keys \*'
  
 _NOTE:  command `ttl` stands for `time to live`_
 
-## increment num values with `incr` command and decrement with `decr`
+## increment with `incr` and decrement with `decr`  commands
 
 ```bash
 redis-cli 'set salary 4444'
@@ -137,7 +137,6 @@ redis-cli 'incr salary'
 # (integer) 4445
 ```
 
-
 ## customize previous flow with `incrby` / `decrby`
 
 ```bash
@@ -149,6 +148,17 @@ redis-cli 'incrby salary 500'
 # (integer) 1495
 redis-cli 'incrby salary 100500'
 # (integer) 101995
+```
+
+## append
+
+```bash
+redis-cli 'set message hello'
+# OK
+redis-cli 'append message -world!'
+# (integer) 12
+redis-cli 'get message'
+# "hello-world!"
 ```
 
 ## cleanup
