@@ -71,10 +71,27 @@ redis-cli 'setex temporal 60 this-value-will-exire-after-60-secons'
 # OK
 redis-cli 'ttl temporal'
 # (integer) 58
+sleep 6s ; redis-cli 'get temporal'
+# "this-value-will-exire-after-60-secons"
 sleep 60s ; redis-cli 'get temporal'
 # (nil)
 redis-cli 'ttl temporal'
 # (integer) -2
+```
+
+## set value if key is not available with `setnx`
+
+```bash
+redis-cli 'get new-key'
+# (nil)
+redis-cli 'setnx new-key a-value'
+# (integer) 1
+redis-cli 'get new-key'
+# "a-value"
+redis-cli 'setnx new-key this-value-wont-be-present'
+# (integer) 0
+redis-cli 'get new-key'
+# "a-value"
 ```
 
 NOTE:  command `ttl` stands for `time to live`
