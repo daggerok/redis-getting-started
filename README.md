@@ -252,6 +252,8 @@ redis-cli 'hmget person username age'
 # 2) "24"
 ```
 
+![Hashes](./hashes.png)
+
 ## list
 
 strings sorted in a some order
