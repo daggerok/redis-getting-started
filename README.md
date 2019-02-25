@@ -175,6 +175,8 @@ redis-cli 'hmset person username maksimko password very-secret'
 # OK
 redis-cli 'hget person password'
 # "very-secret"
+redis-cli 'hmget person password'
+# 1) "very-secret"
 redis-cli 'hgetall person'
 # 1) "username"
 # 2) "maksimko"
@@ -229,6 +231,21 @@ redis-cli 'hincrby person age 1'
 # (integer) 19
 redis-cli 'hincrby person age 5'
 # (integer) 24
+```
+
+### others
+
+```bash
+redis-cli 'hstrlen person username'
+# (integer) 8
+redis-cli  'hvals person'
+# 1) "maksimko"
+# 2) "24"
+redis-cli 'hlen person' # number of fields in object hash
+# (integer) 2
+redis-cli 'hmget person username age'
+# 1) "maksimko"
+# 2) "24"
 ```
 
 _NOTE: returns only key fields of object_
