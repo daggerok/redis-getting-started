@@ -94,6 +94,15 @@ redis-cli 'get new-key'
 # "a-value"
 ```
 
+## get value size with `strlen` command
+
+```bash
+redis-cli 'set ololo trololo'
+# OK
+redis-cli 'strlen ololo'
+# (integer) 7
+```
+
 NOTE:  command `ttl` stands for `time to live`
 
 ## cleanup
