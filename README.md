@@ -224,6 +224,8 @@ redis-cli 'hkeys person'
 # 2) "age"
 ```
 
+_NOTE: returns only key fields of object_
+
 ### `hincrby` similar to strings
 
 ```bash
@@ -304,9 +306,61 @@ redis-cli 'linsert my-list after X X' #  List(6 5 4 3 2 1 X X 1 2 3 4 5 6)
 redis-cli 'linsert my-list before X X' # List(6 5 4 3 2 1 X X X 1 2 3 4 5 6)
 ```
 
-__
+## sets
 
-_NOTE: returns only key fields of object_
+```bash
+# create: my-set = Set(one two three)
+redis-cli 'sadd my-set one two three'
+
+# view
+redis-cli 'smembers my-set'
+# 1) "two"
+# 2) "one"
+# 3) "three"
+
+redis-cli 'sadd my-other-set two three four'
+redis-cli 'sdiff my-set my-other-set'
+# 1) "one"
+redis-cli 'sdiff my-other-set my-set'
+# 1) "four"
+
+redis-cli 'sunion my-other-set my-set'
+# 1) "two"
+# 2) "one"
+# 3) "three"
+# 4) "four"
+
+redis-cli 'sunionstore result-set my-other-set my-set'
+redis-cli 'smembers result-set'
+# 1) "two"
+# 2) "one"
+# 3) "three"
+# 4) "four"
+
+redis-cli 'srem result-set four'
+redis-cli 'smembers result-set'
+# 1) "two"
+# 2) "one"
+# 3) "three"
+
+# remove last value from result-set
+redis-cli 'spop result-set'
+# 3) "three"
+
+redis-cli 'sadd result-set ololo trololo hohoho'
+# remove random 2 values from result-set
+redis-cli 'spop result-set 2'
+# 1) "ololo"
+# 2) "two"
+redis-cli 'smembers result-set'
+# 1) "one"
+# 2) "hohoho"
+# 3) "trololo"
+```
+
+also see: `sinter` - intersection and `smove` - move value from some set to another...
+
+okay, enough...
 
 ## cleanup
 
