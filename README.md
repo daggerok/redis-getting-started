@@ -38,6 +38,16 @@ redis-cli redis-cli 'set message hi'
 ```bash
 redis-cli 'get message'
 # "hi"
+
+redis-cli 'keys *'
+# 1) "message"
+```
+
+## delete data
+
+```bash
+redis-cli 'del message'
+# (integer) 1
 ```
 
 ## cleanup
