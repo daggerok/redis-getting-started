@@ -9,9 +9,23 @@ Read docs on [GitHub Pages](https://daggerok.github.io/redis-getting-started/)
 
 ## run database
 
+_run single node instance_
+
+![Single instance mode](./mode-single-instance.png)
+
 ```bash
 docker run -d --rm --name redis redis:alpine
 ```
+
+_not shown: master-slaves approach_
+
+![Master-slave mode](./mode-master-slaves.png)
+
+I this case you going to read from your slaves until you not restarted your master
+
+_most reliable is run in sentinel mode_
+
+![Sentinel mode](./mode-sentinels.png)
 
 ## prepare redis-cli command alias fot using docker
 
@@ -163,7 +177,7 @@ redis-cli 'get message'
 # "hello-world!"
 ```
 
-![Strings](./strings.png)
+![Strings](./feature-strings.png)
 
 ## hashes
 
@@ -252,7 +266,7 @@ redis-cli 'hmget person username age'
 # 2) "24"
 ```
 
-![Hashes](./hashes.png)
+![Hashes](./feature-hashes.png)
 
 ## list
 
@@ -310,7 +324,7 @@ redis-cli 'linsert my-list after X X' #  List(6 5 4 3 2 1 X X 1 2 3 4 5 6)
 redis-cli 'linsert my-list before X X' # List(6 5 4 3 2 1 X X X 1 2 3 4 5 6)
 ```
 
-![Lists](./lists.png)
+![Lists](./feature-lists.png)
 
 ## sets
 
@@ -366,11 +380,11 @@ redis-cli 'smembers result-set'
 
 also see: `sinter` - intersection and `smove` - move value from some set to another...
 
-![Sets](./sets.png)
+![Sets](./feature-sets.png)
 
 ## transactions
 
-![Multi](./multi.png)
+![Multi](./feature-multi.png)
 
 okay, enough...
 
@@ -385,3 +399,7 @@ docker rm -f -v redis
 ```bash
 npm i ; npm run build
 ```
+
+## resources
+
+[YouTube: Next Level Redis with Spring](https://www.youtube.com/watch?v=VvK-uLWDHFo)
