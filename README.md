@@ -23,13 +23,85 @@ _not shown: master-slaves approach_
 
 I this case you going to read from your slaves until you not restarted your master
 
-_most reliable is run in sentinel mode_
+_also not shown: most reliable is run in sentinel mode_
 
 ![Sentinel mode](./mode-sentinels.png)
 
 _finally must have mode is clustered_
 
 ![Clustered mode](./mode-cluster.png)
+
+create `redis.conf` file and start cluster
+
+```bash
+# change dir to safe place
+cd /tmp/
+
+# create redis config
+cat << EOF > ./redis.conf
+port 6379
+cluster-enabled yes
+cluster-config-file nodes.conf
+cluster-node-timeout 5000
+appendonly yes
+EOF
+
+# create docker network
+docker network rm redis-net ; \
+  docker network create redis-net
+
+# run 6 redis nodes
+for i in `seq 1 6`; do \
+  docker run -d \
+    --net redis-net --name redis-$i -p 6379 \
+    -v $PWD/redis.conf:/usr/local/etc/redis/redis.conf \
+    redis:alpine redis-server /usr/local/etc/redis/redis.conf; \
+done
+
+# find container ip
+#for i in `seq 1 6`; do \
+#  docker inspect -f '{{ (index .NetworkSettings.Networks "redis-net").IPAddress }}' redis-$i ; \
+#done
+# 172.26.0.2, 172.26.0.3, 172.26.0.4, 172.26.0.5, 172.26.0.6, 172.26.0.7
+
+# build cluster node:port items list
+export nodes=$(for i in `seq 1 6`; do \
+  echo -n "$(docker inspect -f '{{ (index .NetworkSettings.Networks "redis-net").IPAddress }}' redis-$i):6379 " ; done)
+
+# initialize redis cluster
+echo 'yes' | docker exec -i redis-1 ash -c "\
+  redis-cli --cluster create $nodes --cluster-replicas 1"
+
+# connect with additional flag: '-c'
+docker exec -it redis-4 redis-cli -c
+
+# we can created keys and we will be redirected to proper node if needed
+127.0.0.1:6379> set key-2 trololo
+-> Redirected to slot [12422] located at 192.168.240.4:6379
+OK
+192.168.240.4:6379> set key-1 ololo
+-> Redirected to slot [229] located at 192.168.240.2:6379
+OK
+
+# we can get key-1 or key-2 separately
+192.168.240.2:6379> get key-1
+"ololo"
+192.168.240.2:6379> get key-2
+-> Redirected to slot [12422] located at 192.168.240.4:6379
+"troololo"
+
+# but we cannot use mget for sharded data
+192.168.240.4:6379> mget key-1 key-2
+(error) CROSSSLOT Keys in request don't hash to the same slot
+# so redis dose not serve cross slot data
+# so spring data can help here us with that!
+# spring-data can connect to all redis nodes to collect all info... 
+```
+
+::: tip 
+Dont not create `nodes.conf` file.
+We don’t need to do anything except adding this line.
+:::
 
 ## prepare redis-cli command alias fot using docker
 
@@ -406,4 +478,5 @@ npm i ; npm run build
 
 ## resources
 
-[YouTube: Next Level Redis with Spring](https://www.youtube.com/watch?v=VvK-uLWDHFo)
+- [YouTube: Next Level Redis with Spring](https://www.youtube.com/watch?v=VvK-uLWDHFo)
+- [Redis cluster](https://medium.com/commencis/creating-redis-cluster-using-docker-67f65545796d)
