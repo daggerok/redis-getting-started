@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <link rel="icon" href="/redis-getting-started/favicon.ico">
     
-    <link rel="preload" href="/redis-getting-started/assets/css/0.styles.5328743e.css" as="style"><link rel="preload" href="/redis-getting-started/assets/js/app.cea591de.js" as="script"><link rel="preload" href="/redis-getting-started/assets/js/3.0785059c.js" as="script"><link rel="prefetch" href="/redis-getting-started/assets/js/2.e6b85e1a.js"><link rel="prefetch" href="/redis-getting-started/assets/js/4.5d17e7e2.js">
+    <link rel="preload" href="/redis-getting-started/assets/css/0.styles.5328743e.css" as="style"><link rel="preload" href="/redis-getting-started/assets/js/app.7dc1f1c6.js" as="script"><link rel="preload" href="/redis-getting-started/assets/js/2.b5fb6279.js" as="script"><link rel="prefetch" href="/redis-getting-started/assets/js/3.56adbc88.js"><link rel="prefetch" href="/redis-getting-started/assets/js/4.a6fc209c.js">
     <link rel="stylesheet" href="/redis-getting-started/assets/css/0.styles.5328743e.css">
   </head>
   <body>
@@ -134,7 +134,7 @@ redis-cli <span class="token string">'hlen person'</span> <span class="token com
 redis-cli <span class="token string">'hmget person username age'</span>
 <span class="token comment"># 1) &quot;maksimko&quot;</span>
 <span class="token comment"># 2) &quot;24&quot;</span>
-</code></pre></div><h2 id="list"><a href="#list" aria-hidden="true" class="header-anchor">#</a> list</h2> <p>strings sorted in a some order</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">head</span> <span class="token operator">&lt;</span>--<span class="token operator">&gt;</span> value1 <span class="token operator">&lt;</span>--<span class="token operator">&gt;</span> value2 <span class="token operator">&lt;</span>--<span class="token operator">&gt;</span> <span class="token punctuation">..</span>. <span class="token operator">&lt;</span>--<span class="token operator">&gt;</span> valueN <span class="token operator">&lt;</span>--<span class="token operator">&gt;</span> <span class="token function">tail</span>
+</code></pre></div><p><img src="/redis-getting-started/assets/img/hashes.8290dd19.png" alt="Hashes"></p> <h2 id="list"><a href="#list" aria-hidden="true" class="header-anchor">#</a> list</h2> <p>strings sorted in a some order</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">head</span> <span class="token operator">&lt;</span>--<span class="token operator">&gt;</span> value1 <span class="token operator">&lt;</span>--<span class="token operator">&gt;</span> value2 <span class="token operator">&lt;</span>--<span class="token operator">&gt;</span> <span class="token punctuation">..</span>. <span class="token operator">&lt;</span>--<span class="token operator">&gt;</span> valueN <span class="token operator">&lt;</span>--<span class="token operator">&gt;</span> <span class="token function">tail</span>
 </code></pre></div><h3 id="debug-redis-cli"><a href="#debug-redis-cli" aria-hidden="true" class="header-anchor">#</a> debug redis-cli</h3> <div class="language-bash extra-class"><pre class="language-bash"><code>redis-cli <span class="token string">'monitor'</span>
 </code></pre></div><h3 id="and-do-playground-in-a-parallel-terminal"><a href="#and-do-playground-in-a-parallel-terminal" aria-hidden="true" class="header-anchor">#</a> and do playground in a parallel terminal...</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># create: my-list = List(3 2 1 0)</span>
 redis-cli <span class="token string">'lpush my-list 0 1 2 3'</span>
@@ -173,7 +173,7 @@ redis-cli <span class="token string">'rpushx my-list 5 6'</span>
 <span class="token comment"># insert XX to make XXX in a middle</span>
 redis-cli <span class="token string">'linsert my-list after X X'</span> <span class="token comment">#  List(6 5 4 3 2 1 X X 1 2 3 4 5 6)</span>
 redis-cli <span class="token string">'linsert my-list before X X'</span> <span class="token comment"># List(6 5 4 3 2 1 X X X 1 2 3 4 5 6)</span>
-</code></pre></div><h2 id="sets"><a href="#sets" aria-hidden="true" class="header-anchor">#</a> sets</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># create: my-set = Set(one two three)</span>
+</code></pre></div><p><img src="/redis-getting-started/assets/img/lists.94ef7c6f.png" alt="Lists"></p> <h2 id="sets"><a href="#sets" aria-hidden="true" class="header-anchor">#</a> sets</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># create: my-set = Set(one two three)</span>
 redis-cli <span class="token string">'sadd my-set one two three'</span>
 
 <span class="token comment"># view</span>
@@ -220,9 +220,9 @@ redis-cli <span class="token string">'smembers result-set'</span>
 <span class="token comment"># 1) &quot;one&quot;</span>
 <span class="token comment"># 2) &quot;hohoho&quot;</span>
 <span class="token comment"># 3) &quot;trololo&quot;</span>
-</code></pre></div><p>also see: <code>sinter</code> - intersection and <code>smove</code> - move value from some set to another...</p> <p>okay, enough...</p> <h2 id="cleanup"><a href="#cleanup" aria-hidden="true" class="header-anchor">#</a> cleanup</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>docker <span class="token function">rm</span> -f -v redis
+</code></pre></div><p>also see: <code>sinter</code> - intersection and <code>smove</code> - move value from some set to another...</p> <p><img src="/redis-getting-started/assets/img/sets.a54908f9.png" alt="Sets"></p> <h2 id="transactions"><a href="#transactions" aria-hidden="true" class="header-anchor">#</a> transactions</h2> <p><img src="/redis-getting-started/assets/img/multi.9d2e0aba.png" alt="Multi"></p> <p>okay, enough...</p> <h2 id="cleanup"><a href="#cleanup" aria-hidden="true" class="header-anchor">#</a> cleanup</h2> <div class="language-bash extra-class"><pre class="language-bash"><code>docker <span class="token function">rm</span> -f -v redis
 </code></pre></div><h2 id="build-vuepress-documentation"><a href="#build-vuepress-documentation" aria-hidden="true" class="header-anchor">#</a> build VuePress documentation</h2> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">npm</span> i <span class="token punctuation">;</span> <span class="token function">npm</span> run build
-</code></pre></div></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2/25/2019, 11:17:10 PM</span></div></div> <!----> </div> <!----></div></div>
-    <script src="/redis-getting-started/assets/js/app.cea591de.js" defer></script><script src="/redis-getting-started/assets/js/3.0785059c.js" defer></script>
+</code></pre></div></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">2/26/2019, 12:01:08 AM</span></div></div> <!----> </div> <!----></div></div>
+    <script src="/redis-getting-started/assets/js/app.7dc1f1c6.js" defer></script><script src="/redis-getting-started/assets/js/2.b5fb6279.js" defer></script>
   </body>
 </html>
