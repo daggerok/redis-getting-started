@@ -27,6 +27,10 @@ _most reliable is run in sentinel mode_
 
 ![Sentinel mode](./mode-sentinels.png)
 
+_finally must have mode is clustered_
+
+![Clustered mode](./mode-cluster.png)
+
 ## prepare redis-cli command alias fot using docker
 
 ```bash
