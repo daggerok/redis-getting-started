@@ -368,6 +368,10 @@ also see: `sinter` - intersection and `smove` - move value from some set to anot
 
 ![Sets](./sets.png)
 
+## transactions
+
+![Multi](./multi.png)
+
 okay, enough...
 
 ## cleanup
